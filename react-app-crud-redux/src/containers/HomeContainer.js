@@ -5,7 +5,7 @@ export default class HomeContainer extends Component {
     render() {
         return (
             <div>
-                <TableComponent users={this.props.users}/>
+                <TableComponent />
             </div>
         )
     }

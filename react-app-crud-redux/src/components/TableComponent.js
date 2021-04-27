@@ -6,6 +6,8 @@ import { faInfo, faEdit, faTrash, faUserPlus } from "@fortawesome/free-solid-svg
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+
 
 const { SearchBar } = Search;
 
@@ -61,6 +63,12 @@ const defaultSorted = [
   },
 ];
 
+const mapStateToProps = (state) => ({
+  
+    users: state.users.users,
+  
+})
+
 const TableComponent = (props) => {
   return (
     <Container>
@@ -99,4 +107,4 @@ const TableComponent = (props) => {
   );
 };
 
-export default TableComponent;
+export default connect(mapStateToProps, null)(TableComponent);
