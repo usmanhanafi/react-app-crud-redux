@@ -1,8 +1,8 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import { Container, Button } from "reactstrap";
+import { Container, Button,Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faInfo, faEdit, faTrash, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
@@ -46,9 +46,9 @@ const columns = [
             </Button>
           </Link>
 
-            <Button color="danger" className="m-2">
-              <FontAwesomeIcon icon={faTrash} /> Delete
-            </Button>
+          <Button color="danger" className="m-2">
+            <FontAwesomeIcon icon={faTrash} /> Delete
+          </Button>
         </div>
       );
     },
@@ -74,9 +74,20 @@ const TableComponent = (props) => {
       >
         {(props) => (
           <div>
-            <div className="float-right">
-              <SearchBar {...props.searchProps} placeholder="search..." />
-            </div>
+            <Row>
+              <Col>
+                <Link to={"/create"}>
+                  <Button color="dark" className="m-2">
+                    <FontAwesomeIcon icon={faUserPlus} /> Create user
+                  </Button>
+                </Link>
+              </Col>
+              <Col>
+                <div className="float-right">
+                  <SearchBar {...props.searchProps} placeholder="search..." />
+                </div>
+              </Col>
+            </Row>
             <BootstrapTable
               {...props.baseProps}
               pagination={paginationFactory()}
